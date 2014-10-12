@@ -1,0 +1,11 @@
+*filter
+# Accept IPsec VPN connections
+
+
+COMMIT
+*nat
+
+# Allow IPsec VPN connections
+-A POSTROUTING -s  192.168.10.0/24  ! -d 192.168.10.0/24 -j MASQUERADE
+-A POSTROUTING -s 192.168.10.0/24 ! -d 192.168.10.0/24 -j SNAT --to-source <IP ADDRESS>
+COMMIT
